@@ -1,7 +1,7 @@
 /*
 * 1-conjugate.c - Conjugate of ocmplex
-* Author: Rodrigo Zárate Algecira
-* Date: July 30, 2021
+* Author: Ntombi Mathibela
+* Date: March 15, 2022
 */
 
 #include "holberton.h"

@@ -1,7 +1,7 @@
 /*
 * 3-argument.c - Modulus of complex
-* Author: Rodrigo Zárate Algecira
-* Date: July 30, 2021
+* Author: Ntombi Mathibela
+* Date: March 15, 2022
 */
 
 #include "holberton.h"
