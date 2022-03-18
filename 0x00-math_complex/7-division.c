@@ -1,23 +1,15 @@
 #include "holberton.h"
-
 /**
- * division - Divides two complex numbers
- *
- * @c1: First complex number
- * @c2: Second complex number
- * @c3: Where to store the result
- * Return: Void
+ * division - division operation to complex numbers.
+ * @c1: 1 number
+ * @c2: 2 number
+ * @c3: result division number complez
  */
-
 void division(complex c1, complex c2, complex *c3)
 {
-  complex c4, c5, c6;
-  
-  c4.re = c2.re;
-  c4.im = c2.im;
-  c4 = conjugate(c4);
-  multiplication(c2, c4, &c5);
-  multiplication(c1, c4, &c6);
-  c3->re = c6.re / c5.re;
-  c3->im = c6.im / c5.re;
+	c3->re = ((c1.re * c2.re) + (c1.im * c2.im));
+	c3->re /= ((c2.re * c2.re) + (c2.im * c2.im));
+
+	c3->im = ((c1.re * -c2.im) + (c1.im * c2.re));
+	c3->im /= ((c2.re * c2.re) + (c2.im * c2.im));
 }
