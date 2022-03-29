@@ -1,46 +1,81 @@
+/*
+* 0-heron.c
+* Author: Rodrigo Zárate Algecira
+* Date: August 06, 2021
+*/
+
+#include <math.h>
 #include "heron.h"
+
 /**
- * heron - funtion that return the Heron sequence until having convergence
- * with an error less or equal to 10^(-7)
- *
- * @p: Parameter with the number to compare the root
- * @x0: Parameter with the start point
- *
- * Return: The head of the created linked
- */
+* add_node - add node
+* @tpt: pointer
+* @v: double
+* Return: node
+*/
+
+t_cell *add_node(t_cell **tpt, double v)
+{
+t_cell *tempnode;
+
+tempnode = *tpt;
+
+/* firts time */
+	if (tempnode == NULL)
+	{
+	tempnode = malloc(sizeof(t_cell));
+	/* malloc goes wrong */
+		if (tempnode == NULL)
+			free(tempnode);
+
+	tempnode->elt = v;
+	tempnode->next = NULL;
+	}
+	else
+	{
+	tempnode = malloc(sizeof(t_cell));
+		if (tempnode == NULL)
+			free(tempnode);
+
+	tempnode->elt = v;
+	tempnode->next = *tpt;
+	}
+/* pointer set to new node adress */
+*tpt = tempnode;
+
+return (tempnode);
+}
+
+/**
+* heron - Return Heron secuence
+* @p: double
+* @x0: double
+* Return: list
+*/
+/* receive params */
 t_cell *heron(double p, double x0)
 {
-	double x1, error = 0;
-	t_cell *new, *head = NULL, *tmp = NULL;
+t_cell *thenode = NULL, *list;
+double value = x0;
+double comp = p / 2;
+double aprox = 0;
 
-	x1 = x0;
-
-	new = malloc(sizeof(t_cell));
-	if (new == NULL)
-		return (NULL);
-	head = new;
-	new->elt = x1;
-	new->next = NULL;
-
-	error = ((x1 * x1) > p) ? (x1 * x1) - p : p - (x1 * x1);
-
-	if (error <= 0.0000001)
+	while (comp != aprox)
 	{
-		return (head);
+	/* another way of do the heron */
+		aprox = comp;
+		comp = (p / aprox + aprox) / 2;
 	}
 
-	x1 = ((p / x0) + x0) / 2;
-
-	head = heron(p, x1);
-
-	tmp = head;
-
-	while (tmp->next)
+/* iterate over value */
+	while (comp != value)
 	{
-		tmp = tmp->next;
+	/* do the math */
+	value = 0.5 * (value + (p / value));
+
+	/* Populate node list */
+	list = add_node(&thenode, value);
 	}
-
-	tmp->next = new;
-
-	return (head);
+/* Return list */
+return (list);
 }
