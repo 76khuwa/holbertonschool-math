@@ -1,23 +1,22 @@
-#ifndef SEQUENCES_H
-#define SEQUENCES_H
+#ifndef HEAD_FILE
+#define HEAD_FILE
 
 #include <stdio.h>
-#include <math.h>
-#include <stddef.h>
 #include <stdlib.h>
-
 /**
-* struct t_cell - struct
-* @elt: double
-* @next: pointer
-*/
-
-typedef struct t_cell
+ * struct cell - struct with the data
+ *
+ * @elt: Parameter with the number data
+ * @next: Parameter whit the direction of the next element
+ *
+ * Description: struct to the linked list
+ */
+typedef struct cell
 {
-double elt;
-struct t_cell *next;
+	double elt;
+	struct cell *next;
 } t_cell;
 
 t_cell *heron(double p, double x0);
 
-#endif /* SEQUENCES */
+#endif

@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <conio.h>
+#include <curses.h>
 #include <stdlib.h>
-#include <graphics.h>
 /**
  * main - Function that prints Julia's Set
  *
@@ -9,18 +8,16 @@
  */
 int main(void)
 {
-	int A, B, i, s, gd, gm;
-	double a, b, x, y, t, n = 200, r1, r2;
+	int A, B, i, s;
+	double a, b, x, y, t, n = 15, r1, r2;
 
 	srand(24);
-	detectgraph(&gd, &gm);
-	initgraph(&gd, &gm, NULL);
 	while (1)
 	{
 		r1 = (4.0 * rand() / RAND_MAX) - 2.0;
 		r2 = (2.0 * rand() / RAND_MAX) - 1.0;
 		s = 0;
-		printf("Julia Set for %lf %lf\n", r1, r2);
+		printf("Julia Set for %f %f\n", r1, r2);
 
 		for (B = 0; B <= 4 * n; B++)
 		{
@@ -39,26 +36,23 @@ int main(void)
 						break;
 				}
 				if (i == 1001)
-					/* printf("."); */
-					putpixel(A, B, 1);
+				{
+					printf(".");
 					s = s + 1;
-				/**
-				 * else
-				 * printf(" ");
-				 */
+				}
+				else
+					printf(" ");
 			}
-			/** printf("\n"); */
+			printf("\n");
 		}
 		if (s > 10)
 		{
-			while (!GetAsyncKeyState(VK_RETURN))
-			{
-				delay(10);
-			}
+			/**while (!GetAsyncKeyState(VK_RETURN))
+			{}*/
+			return(0);
 		}
-		/** system("CLS"); */
+		system("CLS");
 	}
 	getch();
-	closegraph();
 	return (0);
 }
