@@ -1,7 +1,7 @@
 /*
 * 0-rectangle.c - rectangle_method
-* Author: Noluyolo Ndungane
-* Date: April 06, 2022
+* Author: Ntombi Mathibela
+* Date: 2022/04/13
 */
 
 #include <stdio.h>

@@ -1,55 +1,16 @@
-/*
-* 0 - ODE method
-* Author: Noluyolo Ndungane
-* Date: April 06, 2022
-*/
-
 #include <stdio.h>
-#include <math.h>
+#include "math.h"
 
-/**
-* euler_method - euler_method
-* @a: double
-* @b: double
-* @steps: int
-* Return: double
-*/
-
-double euler_method(double a, double b, int steps)
+int main(void)
 {
-int i;
-double width, alfa, beta, gamma, x, xa;
-/* same file to plot the pendulum ??? */
-/* EULER */
-/* ODE u''(x) = - sin(u(x)) */
-/* u(0) = 0 */
-/* u'(0) = 1 */
-/* Yn + 1 = Yn + h f'(x)  */
-/* out to dat file */
-/* run gunplot from command line?? */
-/* x		x'		dy/dx  */
-/* ----------------------------------- */
-/* 0		1		- sin(u(0)) -> -sin(0) */
-/* x+width	1+(-sin(x))	- sin(u(x')) */
-/* initial conditions */
-x = 0;
-xa = 1;
-/* steps */
-i = steps;
-/* increment */
-width = (b - a) / steps;
-/* create a loop to walk steps */
-for (i = 0; i <= steps; i++)
-{
-/* print steps */
-printf("x:%lf x':%lf dy/dx:%lf \n", alfa, beta, gamma);
-/* append to file .dat */
-alfa += x + width;
-beta += xa + (-sin(alfa));
-gamma +=  -sin(beta);
+double a, b, solution;
+int steps;
 
-}
+a = 0.03;
+b = 1.4;
+steps = 7;
 
-/* Lets see */
-return(gamma);
+solution = euler_method(a, b, steps);
+printf("solution:%lf \n",solution);
+return (0);
 }
